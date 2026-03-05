@@ -75,17 +75,12 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    let result = question.name + "\n" + question.body;
-    const options =
-        question.type === "multiple_choice_question" ?
-            "\n" +
-            question.options
-                .map(function (opt) {
-                    return "- " + opt;
-                })
-                .join("\n")
-        :   "";
-    return result + options;
+    const headerAndBody = "# " + question.name + "\n" + question.body;
+    const optionLines = question.options.map((opt) => "- " + opt);
+    return (
+        headerAndBody +
+        (optionLines.length === 0 ? "" : "\n" + optionLines.join("\n"))
+    );
 }
 
 /**
@@ -96,7 +91,7 @@ export function renameQuestion(question: Question, newName: string): Question {
     return { ...question, name: newName };
 }
 
-/**
+/*
  * Return a new version of the given question, except the `published` field
  * should be inverted. If the question was not published, now it should be
  * published; if it was published, now it should be not published.

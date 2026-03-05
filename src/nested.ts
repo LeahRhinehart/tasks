@@ -90,7 +90,21 @@ id,name,options,points,published
  * Check the unit tests for more examples! NOT DONE
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    const header = "id,name,options,points,published";
+    const rows = questions.map(function (q) {
+        return (
+            q.id +
+            "," +
+            q.name +
+            "," +
+            q.options.length +
+            "," +
+            q.points +
+            "," +
+            q.published
+        );
+    });
+    return header + "\n" + rows.join("\n");
 }
 
 /**
@@ -221,10 +235,13 @@ export function editOption(
  * the duplicate inserted directly after the original question. Use the `duplicateQuestion`
  * function you defined previously; the `newId` is the parameter to use for the duplicate's ID.
  */
+/*
 export function duplicateQuestionInArray(
     questions: Question[],
     targetId: number,
     newId: number,
 ): Question[] {
+    const newArray=questions.map(q => q.id === targetId ? [q, duplicatedQuestion(newId, q)]: [q]);
     return [];
 }
+*/
