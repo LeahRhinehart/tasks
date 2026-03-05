@@ -1,6 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
-import { makeBlankQuestion } from "./objects";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -235,13 +235,23 @@ export function editOption(
  * the duplicate inserted directly after the original question. Use the `duplicateQuestion`
  * function you defined previously; the `newId` is the parameter to use for the duplicate's ID.
  */
-/*
+
 export function duplicateQuestionInArray(
     questions: Question[],
     targetId: number,
     newId: number,
 ): Question[] {
-    const newArray=questions.map(q => q.id === targetId ? [q, duplicatedQuestion(newId, q)]: [q]);
-    return [];
+    return questions.reduce(
+        (newArray: Question[], question: Question): Question[] => {
+            if (question.id === targetId) {
+                return [
+                    ...newArray,
+                    question,
+                    duplicateQuestion(newId, question),
+                ];
+            }
+            return [...newArray, question];
+        },
+        [],
+    );
 }
-*/
