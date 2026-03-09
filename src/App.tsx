@@ -7,6 +7,10 @@ import { ChangeType } from "./components/ChangeType";
 import { StartAttempt } from "./components/StartAttempt";
 import { TwoDice } from "./components/TwoDice";
 import { CycleHoliday } from "./components/CycleHoliday";
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ShoveBox } from "./bad-components/ShoveBox";
 
 function App(): React.JSX.Element {
     return (
@@ -14,7 +18,8 @@ function App(): React.JSX.Element {
             <header className="App-header">
                 <h1>Leah Rhinehart: CISC275 Tasks: Task 3 Assignment</h1>
             </header>
-
+            <hr></hr>
+            <Counter></Counter>
             <hr />
             <Counter />
             <hr />
@@ -24,6 +29,10 @@ function App(): React.JSX.Element {
             <StartAttempt />
             <TwoDice />
             <CycleHoliday />
+            <DoubleHalf />
+            <ChooseTeam />
+            <ColoredBox />
+            <ShoveBox />
         </div>
     );
 }
